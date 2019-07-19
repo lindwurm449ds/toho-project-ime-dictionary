@@ -1,0 +1,19 @@
+{
+  "name": "toho-project-ime-dictionary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindwurm449ds/toho-project-ime-dictionary.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lindwurm449ds/toho-project-ime-dictionary/issues"
+  },
+  "homepage": "https://github.com/lindwurm449ds/toho-project-ime-dictionary#readme"
+}
