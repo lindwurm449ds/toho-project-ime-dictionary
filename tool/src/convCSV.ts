@@ -1,6 +1,6 @@
 import { CSV } from "./lib/CSV";
 import { File } from "./lib/File";
-import { CsvCollections } from "./@types/CSV";
+import { CsvCollection, CsvElement } from "./@types/CSV";
 
 class Controller {
   constructor(private dirPath: string) {
@@ -17,16 +17,23 @@ class Controller {
     const fileList = await file.getList();
     //console.log(fileList);
 
-    const csvDatas: CsvCollections[][] = await Promise.all(
-      fileList.map(
-        async (file): Promise<any> => {
-          const csv = new CSV(this.dirPath + file);
-          csv.setColumns(["phonetic", "word", "partsOfSpeech", "comment"]);
+    let csvDatas: CsvCollection = {};
+    for (let file of fileList) {
+      const csv = new CSV(this.dirPath + file);
+      csv.setColumns(["phonetic", "word", "partsOfSpeech", "comment"]);
+      csvDatas[
+        file.match(/(.*)(?:\.([^.]+$))/)[1]
+      ] = ((await csv.getData()) as any) as CsvElement[];
+    }
 
-          return (csv.getData() as any) as Promise<CsvCollections[]>;
-        }
-      )
-    );
+    // 統合版のデータを作成
+    const csvIntegrationData = [];
+    Object.keys(csvDatas).forEach((key: string): void => {
+      csvDatas[key].forEach((item): void => {
+        csvIntegrationData.push(item);
+      });
+    });
+    csvDatas["0-総合"] = csvIntegrationData;
 
     console.log(csvDatas);
   };
