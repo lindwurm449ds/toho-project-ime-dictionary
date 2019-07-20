@@ -28,7 +28,7 @@
     ],
     "rules": {
         "no-undef": "error",
-        "no-unused-vars": "error",
+        "no-unused-vars": "off",
         "no-console": "off",
         "strict": "warn",
         "camelcase": "warn",
@@ -37,6 +37,8 @@
         "@typescript-eslint/explicit-member-accessibility": "off",
         "@typescript-eslint/no-parameter-properties": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-angle-bracket-type-assertion": "off",
         "prettier/prettier": "error"
     }
 }
