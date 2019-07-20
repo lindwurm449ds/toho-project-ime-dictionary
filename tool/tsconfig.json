@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "lib": [
-      "es2017",
+      "es2015",
       "dom"
     ],
     "esModuleInterop": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
-    "target": "es2017",
+    "target": "es5",
+    "module": "es2015",
     "outDir": "lib"
   },
   "exclude": [

@@ -1,23 +1,30 @@
-const path = require("path");
-const Webpack = require("webpack");
+path = require("path");
+Webpack = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.ts",
+  entry: ["./src/convCSV.ts"],
+  target: 'node',
   devtool: false,
   output: {
-    filename: "bundle.js",
-    path: path.join(__dirname, "dist")
+    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].js"
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: "ts-loader"
-      }
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+      },
     ]
   },
   resolve: {
-    extensions: [".ts"]
-  }
+    extensions: [
+      '.js',
+      '.jsx',
+      '.json',
+      '.ts',
+      '.tsx'
+    ]
+  },
 };

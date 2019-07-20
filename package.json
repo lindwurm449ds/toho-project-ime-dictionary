@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "cd ./tool && npm install && cd ../",
+    "build": "cd ./tool && npm run build && cd ../",
+    "conv": "cd ./tool && node ./dist/main.js && cd ../"
   },
   "repository": {
     "type": "git",
