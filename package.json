@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "cd ./tool && npm install && cd ../",
+    "setup": "cd ./tool && npm install && cd ../ && npm install",
     "build": "cd ./tool && npm run build && cd ../",
     "conv": "cd ./tool && node ./dist/main.js && cd ../"
   },
@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/lindwurm449ds/toho-project-ime-dictionary/issues"
   },
-  "homepage": "https://github.com/lindwurm449ds/toho-project-ime-dictionary#readme"
+  "homepage": "https://github.com/lindwurm449ds/toho-project-ime-dictionary#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@typescript-eslint/eslint-plugin": "^1.12.0"
+  }
 }
