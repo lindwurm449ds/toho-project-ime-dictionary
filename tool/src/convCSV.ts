@@ -28,7 +28,11 @@ class Controller {
   /**
    * メインの処理を実行する。
    */
-  public run = async (): Promise<void> => {
+  public run = async (outputPath: string): Promise<void> => {
+    if (outputPath.slice(-1) !== '/') {
+      outputPath = outputPath + '/';
+    }
+
     const file = new File(this.dirPath);
     const fileList = await file.getList();
     //console.log(fileList);
@@ -45,15 +49,16 @@ class Controller {
     // 統合版のデータを作成
     csvDatas['0-総合'] = this.makeIntegrationData(csvDatas);
 
-    console.log(csvDatas);
-
     const googleIMEConverter = new GoogleIMEConverter(csvDatas);
-    googleIMEConverter.outputFile('../dist/Google日本語入力', 'txt');
+    googleIMEConverter.outputFile(outputPath + 'Google日本語入力', 'txt');
   };
 }
 
 console.log('start');
 const dirPath = '../dic';
+const outputPath = '../dist';
 
 const controller = new Controller(dirPath);
-controller.run().then();
+controller.run(outputPath).then((): void => {
+  console.log('complete');
+});
