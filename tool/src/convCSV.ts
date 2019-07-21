@@ -1,5 +1,6 @@
 import { CSV } from './lib/CSV';
 import { File } from './lib/File';
+import { GoogleIMEConverter } from './lib/Converter/GoogleIMEConverter';
 import { CsvCollection, CsvElement } from './@types/CSV';
 
 class Controller {
@@ -45,6 +46,9 @@ class Controller {
     csvDatas['0-総合'] = this.makeIntegrationData(csvDatas);
 
     console.log(csvDatas);
+
+    const googleIMEConverter = new GoogleIMEConverter(csvDatas);
+    googleIMEConverter.outputFile('../dist/Google日本語入力', 'txt');
   };
 }
 
