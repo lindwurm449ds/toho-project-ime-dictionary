@@ -1,4 +1,4 @@
-import * as fs from "fs-extra";
+import * as fs from 'fs-extra';
 
 export class File {
   constructor(private path: string) {}

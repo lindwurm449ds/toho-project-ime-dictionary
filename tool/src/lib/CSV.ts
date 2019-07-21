@@ -1,5 +1,5 @@
-import * as fs from "fs-extra";
-import * as csv from "csv";
+import * as fs from 'fs-extra';
+import * as csv from 'csv';
 
 export class CSV {
   private data: any;
@@ -11,20 +11,17 @@ export class CSV {
    */
   private readFile = async (): Promise<void> => {
     const readableStream = await fs.createReadStream(this.path, {
-      encoding: "utf-8"
+      encoding: 'utf-8'
     });
 
     this.data = await new Promise((resolve, reject): void => {
       readableStream.pipe(
-        csv.parse(
-          { delimiter: ",", columns: this.columns },
-          (err, data): void => {
-            if (err) {
-              return reject(err);
-            }
-            return resolve(data);
+        csv.parse({ delimiter: ',', columns: this.columns }, (err, data): void => {
+          if (err) {
+            return reject(err);
           }
-        )
+          return resolve(data);
+        })
       );
     });
   };
@@ -41,9 +38,7 @@ export class CSV {
    * CSV のオブジェクトを取得する。
    * @return {Promise<{ [s: string]: string }[] | string[][]>} CSV のオブジェクト。列指定の有無で返る型が変わる。
    */
-  public getData = async (): Promise<
-    { [s: string]: string }[] | string[][]
-  > => {
+  public getData = async (): Promise<{ [s: string]: string }[] | string[][]> => {
     if (!this.data) {
       await this.readFile();
     }
