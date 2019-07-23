@@ -1,6 +1,7 @@
 import { CSV } from './lib/CSV';
 import { File } from './lib/File';
 import { GoogleIMEConverter } from './lib/Converter/GoogleIMEConverter';
+import { OpenExpansionDicConverter } from './lib/Converter/OpenExpansionDicConverter';
 import { CsvCollection, CsvElement } from './@types/CSV';
 
 class Controller {
@@ -49,8 +50,18 @@ class Controller {
     // 統合版のデータを作成
     csvDatas['0-総合'] = this.makeIntegrationData(csvDatas);
 
+    /**
+     * ファイルの出力
+     */
+    // Google日本語入力
     const googleIMEConverter = new GoogleIMEConverter(csvDatas);
+    googleIMEConverter.setRev(8);
     googleIMEConverter.outputFile(outputPath + 'Google日本語入力', 'txt');
+
+    // オープン拡張辞書
+    const openExpansionDicConverter = new OpenExpansionDicConverter(csvDatas);
+    openExpansionDicConverter.setRev(8);
+    openExpansionDicConverter.outputFile(outputPath + 'オープン拡張辞書', 'dctx');
   };
 }
 

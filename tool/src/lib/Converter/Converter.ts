@@ -3,6 +3,7 @@ import { CsvCollection, CsvElement } from '../../@types/CSV';
 
 export abstract class Converter {
   protected items: string[];
+  protected rev: string | number;
   constructor(private data: CsvCollection) {
     this.items = [];
     Object.keys(this.data).forEach((key: string): void => {
@@ -16,6 +17,14 @@ export abstract class Converter {
    */
   public setItem = (items: string[]): void => {
     this.items = items;
+  };
+
+  /**
+   * 出力するファイルの Rev をセットする。
+   * @param {string | number} rev 設定する Rev
+   */
+  public setRev = (rev: string | number): void => {
+    this.rev = rev;
   };
 
   /**
@@ -36,14 +45,15 @@ export abstract class Converter {
     }
 
     for (let item of this.items) {
-      const convertedData = this.getConvertedData(this.data[item]);
+      const convertedData = this.getConvertedData(this.data[item], item);
       fs.writeFileSync(path + item + ext, convertedData);
     }
   };
 
   /**
    * データオブジェクトを専用の文字列に変換する。
-   * @param {CsvElement[]} data 変換するデータ 
+   * @param {CsvElement[]} data 変換するデータ
+   * @param {string} fielName   ファイル名
    */
-  protected abstract getConvertedData(data: CsvElement[]): string;
+  protected abstract getConvertedData(data: CsvElement[], fileName: string): string;
 }
