@@ -3,7 +3,7 @@ require_once (dirname(__FILE__) . '/Spyc.php');
  
 $data = spyc_load_file('./metadata.yml');
 
-$last = end($data['release-note']);
+$last = end($data['releaseNote']);
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ $last = end($data['release-note']);
 					<h2 id="UPDATE">更新履歴</h2>
 					<dl class="update-history">
 						<?php 
-							foreach(array_reverse ($data['release-note']) as $item){
+							foreach(array_reverse ($data['releaseNote']) as $item){
 								echo '<dt>'.$item['date'].': <strong>R'.$last['rev'].'-'.date('Ymd', strtotime($last['date'])).'</strong></dt>'."\n";
 								echo '<dd><ul>'."\n";
 								foreach ($item['note'] as $value) {
@@ -79,11 +79,11 @@ $last = end($data['release-note']);
 					<h3>収録作品</h3>
 					<dl class="compact-dl">
 						<dt>ゲーム</dt>
-							<dd><?php echo join(', ', $data['include-data']['game']) ?></dd>
+							<dd><?php echo join(', ', $data['includeData']['game']) ?></dd>
 						<dt>書籍</dt>
-							<dd><?php echo join(', ', $data['include-data']['book']) ?></dd>
+							<dd><?php echo join(', ', $data['includeData']['book']) ?></dd>
 						<dt>音楽CD</dt>
-							<dd><?php echo join(', ', $data['include-data']['music-cd']) ?></dd>
+							<dd><?php echo join(', ', $data['includeData']['musicCd']) ?></dd>
 					</dl>
 					<p>その他、一部のゲスト参加作品の作品名などを収録しています。</p>
 

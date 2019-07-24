@@ -4,12 +4,12 @@ import moment from 'moment';
 import { CsvCollection, CsvElement } from '../../@types/CSV';
 
 export interface MetaDataObject {
-  'include-data': {
+  includeData: {
     game: string[];
     book: string[];
-    'music-cd': string[];
+    musicCd: string[];
   };
-  'release-note': {
+  releaseNote: {
     rev: string | number;
     date: string;
     note: string[];
@@ -49,7 +49,7 @@ export abstract class Converter {
     const metaDataContent = fs.readFileSync(metaDataPath, 'utf8');
     this.metaData = yaml.parse(metaDataContent);
 
-    this.rev = this.metaData['release-note'].slice(-1)[0].rev;
+    this.rev = this.metaData.releaseNote.slice(-1)[0].rev;
   };
 
   /**
@@ -122,7 +122,7 @@ export abstract class Converter {
     let readMeContent = fs.readFileSync(this.readMePath, 'utf8');
 
     const revTag = `r${this.rev}-${moment(
-      new Date(this.metaData['release-note'].slice(-1)[0].date)
+      new Date(this.metaData.releaseNote.slice(-1)[0].date)
     ).format('YYYYMMDD')}`;
 
     readMeContent = readMeContent.replace(/{{FileName}}/g, this.readMeFileName);
@@ -130,20 +130,20 @@ export abstract class Converter {
     readMeContent = readMeContent.replace(/{{RevTag}}/g, revTag);
     readMeContent = readMeContent.replace(
       /{{GameList}}/g,
-      this.getIncludeDataText(this.metaData['include-data'].game, 32, 6)
+      this.getIncludeDataText(this.metaData.includeData.game, 32, 6)
     );
     readMeContent = readMeContent.replace(
       /{{BookList}}/g,
-      this.getIncludeDataText(this.metaData['include-data'].book, 32, 6)
+      this.getIncludeDataText(this.metaData.includeData.book, 32, 6)
     );
     readMeContent = readMeContent.replace(
       /{{MusicCdList}}/g,
-      this.getIncludeDataText(this.metaData['include-data']['music-cd'], 32, 6)
+      this.getIncludeDataText(this.metaData.includeData.musicCd, 32, 6)
     );
 
     readMeContent = readMeContent.replace(
       /{{ReleaseNote}}/g,
-      this.getReleaseNoteText(this.metaData['release-note'], 2)
+      this.getReleaseNoteText(this.metaData.releaseNote, 2)
     );
 
     fs.writeFileSync(path + this.readMeFileName + '.txt', readMeContent);
@@ -180,11 +180,11 @@ export abstract class Converter {
 
   /**
    * ReadMe 向けのリリースノートのテキストを取得する
-   * @param {MetaDataObject['release-note']} items リリースノートのオブジェクトの配列
-   * @param {number} indent                        インデントの空白文字数
-   * @return {string}                              テキスト
+   * @param {MetaDataObject['releaseNote']} items リリースノートのオブジェクトの配列
+   * @param {number} indent                       インデントの空白文字数
+   * @return {string}                             テキスト
    */
-  private getReleaseNoteText = (items: MetaDataObject['release-note'], indent: number): string => {
+  private getReleaseNoteText = (items: MetaDataObject['releaseNote'], indent: number): string => {
     let output = '';
     items.reverse().forEach((item): void => {
       output += ' '.repeat(indent);

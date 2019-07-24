@@ -1,4 +1,4 @@
-include-data:
+includeData:
   game:
     - 靈異伝
     - 封魔録
@@ -41,7 +41,7 @@ include-data:
     - 文果真報
     - 外來韋編
     - The Grimoire of Usami
-  music-cd:
+  musicCd:
     - 蓬莱人形
     - 蓮台野夜行
     - 夢違科学世紀
@@ -55,7 +55,7 @@ include-data:
     - 単行本付属CD
     - 幺樂団の歴史1～5
 
-release-note:
+releaseNote:
   - rev: 1
     date: 2013/02/13
     note:
