@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "target": "es5",
+    "module": "es2015",
+    "outDir": "lib"
+  },
+  "exclude": [
+    "node_modules",
+    "test"
+  ]
+}
