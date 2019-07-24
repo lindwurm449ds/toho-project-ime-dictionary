@@ -38,6 +38,8 @@ export class OpenExpansionDicConverter extends Converter {
     const builder = new xml2js.Builder({ rootName: 'ns1:Dictionary' });
     let xmlData: (XmlHeader | XmlEntry)[] = [];
 
+    const dicName = fileName.split('-')[1];
+
     const header: XmlHeader = {
       'ns1:DictionaryHeader': {
         'ns1:DictionaryGUID': `{${uuid.v4().toUpperCase()}}`,
@@ -46,9 +48,9 @@ export class OpenExpansionDicConverter extends Converter {
         'ns1:SourceURL': 'https://9lab.jp/works/dic/th-dic.html',
         'ns1:CommentInsertion': false,
         'ns1:DictionaryInfo': {
-          'ns1:ShortName': `東方Project ${fileName}辞書`,
-          'ns1:LongName': `東方Project ${fileName}辞書`,
-          'ns1:Description': `同人サークル「上海アリス幻樂団」制作の弾幕系シューティングを中心としたゲーム、書籍、音楽CDなどから成る作品群「東方Project」の${fileName}辞書です。`,
+          'ns1:ShortName': `東方Project ${dicName}辞書`,
+          'ns1:LongName': `東方Project ${dicName}辞書`,
+          'ns1:Description': `同人サークル「上海アリス幻樂団」制作の弾幕系シューティングを中心としたゲーム、書籍、音楽CDなどから成る作品群「東方Project」の${dicName}辞書です。`,
           'ns1:Copyright': 'きゅー(Cue)',
           'ns1:CommentHeader1': 'コメント'
         }
