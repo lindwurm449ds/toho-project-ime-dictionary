@@ -110,7 +110,7 @@ export abstract class Converter {
 
     for (let item of this.items) {
       const convertedData = this.getConvertedData(this.data[item], item);
-      fs.writeFileSync(path + this.fileNamePrefix + item + ext, convertedData);
+      this.saveFile(path + this.fileNamePrefix + item + ext, convertedData);
     }
   };
 
@@ -146,7 +146,7 @@ export abstract class Converter {
       this.getReleaseNoteText(this.metaData.releaseNote, 2)
     );
 
-    fs.writeFileSync(path + this.readMeFileName + '.txt', readMeContent);
+    fs.writeFileSync(path + this.readMeFileName + '.txt', readMeContent, 'utf8');
   };
 
   /**
@@ -205,4 +205,11 @@ export abstract class Converter {
    * @param {string} fielName   ファイル名
    */
   protected abstract getConvertedData(data: CsvElement[], fileName: string): string;
+
+  /**
+   * ファイルを保存する。
+   * @param {string} fielName ファイル名
+   * @param {string} content  ファイルに書き込む文字列
+   */
+  protected abstract saveFile(fileName: string, content: string): void;
 }

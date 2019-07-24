@@ -1,6 +1,7 @@
-import { Converter } from './Converter';
+import * as fs from 'fs-extra';
 import * as xml2js from 'xml2js';
 import * as uuid from 'uuid';
+import { Converter } from './Converter';
 import { CsvElement } from '../../@types/CSV';
 
 interface XmlHeader {
@@ -78,5 +79,9 @@ export class OpenExpansionDicConverter extends Converter {
       '<ns1:DictionaryInfo Language="ja-jp">'
     );
     return convertString;
+  };
+
+  public saveFile = (fileName: string, content: string): void => {
+    fs.writeFileSync(fileName, '\ufeff' + content, 'utf8');
   };
 }
