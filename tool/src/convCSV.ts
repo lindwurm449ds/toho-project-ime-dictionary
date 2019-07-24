@@ -2,6 +2,7 @@ import { CSV } from './lib/CSV';
 import { File } from './lib/File';
 import { GoogleIMEConverter } from './lib/Converter/GoogleIMEConverter';
 import { OpenExpansionDicConverter } from './lib/Converter/OpenExpansionDicConverter';
+import { MSIMEConverter } from './lib/Converter/MSIMEConverter';
 import { CsvCollection, CsvElement } from './@types/CSV';
 
 class Controller {
@@ -69,6 +70,13 @@ class Controller {
     );
     openExpansionDicConverter.setFileNamePrefix(`thdic-r${googleIMEConverter.getRev()}-`);
     openExpansionDicConverter.outputFile(outputPath + 'オープン拡張辞書', 'dctx');
+
+    // MS-IME
+    const msIMEConverter = new MSIMEConverter(csvDatas);
+    msIMEConverter.setMetaData('../assets/metadata.yml');
+    msIMEConverter.setReadMePath('../assets/readme/MSIME.txt', 'はじめにお読みください');
+    msIMEConverter.setFileNamePrefix(`thdic-r${msIMEConverter.getRev()}-`);
+    msIMEConverter.outputFile(outputPath + 'MS-IME', 'txt');
   };
 }
 

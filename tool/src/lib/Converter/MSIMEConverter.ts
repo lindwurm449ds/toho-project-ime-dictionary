@@ -1,8 +1,9 @@
 import * as fs from 'fs-extra';
+import * as iconv from 'iconv-lite';
 import { Converter } from './Converter';
 import { CsvElement } from '../../@types/CSV';
 
-export class GoogleIMEConverter extends Converter {
+export class MSIMEConverter extends Converter {
   public getConvertedData = (data: CsvElement[]): string => {
     let convertString = '';
     data.forEach((item): void => {
@@ -13,6 +14,9 @@ export class GoogleIMEConverter extends Converter {
   };
 
   public saveFile = (fileName: string, content: string): void => {
-    fs.writeFileSync(fileName, content, 'utf8');
+    fs.writeFileSync(fileName, '');
+    let fd = fs.openSync(fileName, 'w');
+    let buf = iconv.encode(content, 'Shift_JIS');
+    fs.writeSync(fd, buf, 0, buf.length);
   };
 }
