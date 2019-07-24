@@ -1,7 +1,7 @@
 <?php
 require_once (dirname(__FILE__) . '/Spyc.php');
  
-$data = spyc_load_file('data.yml');
+$data = spyc_load_file('./metadata.yml');
 
 $last = end($data['release-note']);
 ?>

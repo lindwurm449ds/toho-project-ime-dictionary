@@ -31,6 +31,7 @@
     "@types/node": "^12.6.8",
     "@types/uuid": "^3.4.5",
     "@types/xml2js": "^0.4.4",
+    "@types/yaml": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.12.0",
     "eslint": "^6.0.1",
@@ -51,7 +52,9 @@
   "dependencies": {
     "csv": "^5.1.1",
     "fs-extra": "^8.1.0",
+    "moment": "^2.24.0",
     "uuid": "^3.3.2",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "yaml": "^1.6.0"
   }
 }

@@ -55,12 +55,19 @@ class Controller {
      */
     // Google日本語入力
     const googleIMEConverter = new GoogleIMEConverter(csvDatas);
-    googleIMEConverter.setRev(8);
+    googleIMEConverter.setMetaData('../assets/metadata.yml');
+    googleIMEConverter.setReadMePath('../assets/readme/GoogleIME.txt', 'はじめにお読みください');
+    googleIMEConverter.setFileNamePrefix(`thdic-r${googleIMEConverter.getRev()}-`);
     googleIMEConverter.outputFile(outputPath + 'Google日本語入力', 'txt');
 
     // オープン拡張辞書
     const openExpansionDicConverter = new OpenExpansionDicConverter(csvDatas);
-    openExpansionDicConverter.setRev(8);
+    openExpansionDicConverter.setMetaData('../assets/metadata.yml');
+    openExpansionDicConverter.setReadMePath(
+      '../assets/readme/OpenExpansionDic.txt',
+      'はじめにお読みください'
+    );
+    openExpansionDicConverter.setFileNamePrefix(`thdic-r${googleIMEConverter.getRev()}-`);
     openExpansionDicConverter.outputFile(outputPath + 'オープン拡張辞書', 'dctx');
   };
 }
