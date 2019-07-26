@@ -39,7 +39,7 @@
   "thdic-r{{Rev}}-4-用語.dctxc"         : 用語辞書
   "thdic-r{{Rev}}-5-スペルカード.dctxc" : スペルカード辞書
   "thdic-r{{Rev}}-6-＠変換.dctxc"       : ＠変換辞書
-  "はじめにお読みください.txt"    : 本テキストファイル
+  "{{FileName}}.txt"    : 本テキストファイル
   "変換対応表.txt"                : ＠変換対応表
 
 
