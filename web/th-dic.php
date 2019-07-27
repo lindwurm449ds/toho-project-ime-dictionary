@@ -64,7 +64,7 @@ $last = end($data['releaseNote']);
 					<dl class="update-history">
 						<?php 
 							foreach(array_reverse ($data['releaseNote']) as $item){
-								echo '<dt>'.$item['date'].': <strong>R'.$last['rev'].'-'.date('Ymd', strtotime($last['date'])).'</strong></dt>'."\n";
+								echo '<dt>'.$item['date'].': <strong>R'.$item['rev'].'-'.date('Ymd', strtotime($item['date'])).'</strong></dt>'."\n";
 								echo '<dd><ul>'."\n";
 								foreach ($item['note'] as $value) {
 									echo '<li>'.$value.'</li>'."\n";
