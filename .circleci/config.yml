@@ -28,13 +28,11 @@ aliases:
       npm run package
       sleep 1
 
-  - &deploy_permission_setting
-    name: Setting deploy.sh Permission.
-    command: chmod +x ./.scripts/deploy.sh
-
   - &deploy
     name: Deploy to WebServer.
-    command: ./.scripts/deploy-.sh
+    command: |
+      chmod +x .circleci/upload_server.sh
+      ./.circleci/upload_server.sh
 
 jobs:
   build:
@@ -51,7 +49,6 @@ jobs:
       - run: *show_infomation
       - run: *build
       - run: *package
-      - run: *deploy_permission_setting
       - run: *deploy
 
 workflows:
