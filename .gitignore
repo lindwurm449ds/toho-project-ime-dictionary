@@ -62,3 +62,10 @@ typings/
 
 # Build file
 dist
+
+# ./web
+# .yml
+web/**/*.yml
+
+# .zip
+web/**/*.zip
