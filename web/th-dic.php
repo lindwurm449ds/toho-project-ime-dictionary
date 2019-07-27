@@ -1,7 +1,8 @@
 <?php
 require_once (dirname(__FILE__) . '/Spyc.php');
  
-$data = spyc_load_file('./metadata.yml');
+$data = spyc_load_file('./metaData.yml');
+$upload = spyc_load_file('./uploadData.yml');
 
 $last = end($data['releaseNote']);
 ?>
@@ -102,8 +103,8 @@ $last = end($data['releaseNote']);
 								<li>バージョン: <strong><?php echo 'R'.$last['rev'].'-'.date('Ymd', strtotime($last['date'])) ?></strong></li>
 								<li>更新日: <?php echo $last['date'] ?></li>
 								<li>
-									<a href="https://cloud.9lab.jp/index.php/s/MrQv8Tb29D95ueM" title="東方Project辞書 for オープン拡張辞書">ダウンロード</a>
-									(ZIP形式, 517KB)
+									<a href="<?php echo 'package/th-dic-r'.$last['rev'].'-open.zip' ?>" title="東方Project辞書 for オープン拡張辞書">ダウンロード</a>
+									(ZIP形式, <?php echo $upload['UploadFileData']['MS-IME']['fileSize'] ?>)
 								</li>
 							</ul>
 						</section>
@@ -114,8 +115,8 @@ $last = end($data['releaseNote']);
 								<li>バージョン: <strong><?php echo 'R'.$last['rev'].'-'.date('Ymd', strtotime($last['date'])) ?></strong></li>
 								<li>更新日: <?php echo $last['date'] ?></li>
 								<li>
-									<a href="https://cloud.9lab.jp/index.php/s/qUXijUe85Mn2l7U" title="東方Project辞書 for ATOK">ダウンロード</a>
-									(ZIP形式, 1,519KB)
+									<a href="<?php echo 'package/th-dic-r'.$last['rev'].'-atok.zip' ?>" title="東方Project辞書 for ATOK">ダウンロード</a>
+									(ZIP形式, <?php echo $upload['UploadFileData']['ATOK']['fileSize'] ?>)
 								</li>
 							</ul>
 						</section>
@@ -126,8 +127,8 @@ $last = end($data['releaseNote']);
 								<li>バージョン: <strong><?php echo 'R'.$last['rev'].'-'.date('Ymd', strtotime($last['date'])) ?></strong></li>
 								<li>更新日: <?php echo $last['date'] ?></li>
 								<li>
-									<a href="https://cloud.9lab.jp/index.php/s/3EbkhReDFFpS0Ph" title="東方Project辞書 for Google 日本語入力">ダウンロード</a>
-									(ZIP形式, 333KB)
+									<a href="<?php echo 'package/th-dic-r'.$last['rev'].'-google.zip' ?>" title="東方Project辞書 for Google 日本語入力">ダウンロード</a>
+									(ZIP形式, <?php echo $upload['UploadFileData']['Google日本語入力']['fileSize'] ?>)
 								</li>
 							</ul>
 						</section>
@@ -138,8 +139,8 @@ $last = end($data['releaseNote']);
 								<li>バージョン: <strong><?php echo 'R'.$last['rev'].'-'.date('Ymd', strtotime($last['date'])) ?></strong></li>
 								<li>更新日: <?php echo $last['date'] ?></li>
 								<li>
-									<a href="https://cloud.9lab.jp/index.php/s/WwYiDMHF91HZP67" title="東方Project辞書 for MS-IME">ダウンロード</a>
-									(ZIP形式, 330KB)
+									<a href="<?php echo 'package/th-dic-r'.$last['rev'].'-msime.zip' ?>" title="東方Project辞書 for MS-IME">ダウンロード</a>
+									(ZIP形式, <?php echo $upload['UploadFileData']['MS-IME']['fileSize'] ?>)
 								</li>
 							</ul>
 						</section>

@@ -36,7 +36,7 @@ class Controller {
     }
 
     const file = new File(this.dirPath);
-    const fileList = await file.getList();
+    const fileList = await file.getList('csv');
     //console.log(fileList);
 
     let csvDatas: CsvCollection = {};
@@ -56,14 +56,14 @@ class Controller {
      */
     // Google日本語入力
     const googleIMEConverter = new GoogleIMEConverter(csvDatas);
-    googleIMEConverter.setMetaData('../assets/metadata.yml');
+    googleIMEConverter.setMetaData('../assets/metaData.yml');
     googleIMEConverter.setReadMePath('../assets/readme/GoogleIME.txt', 'はじめにお読みください');
     googleIMEConverter.setFileNamePrefix(`thdic-r${googleIMEConverter.getRev()}-`);
     googleIMEConverter.outputFile(outputPath + 'Google日本語入力', 'txt');
 
     // オープン拡張辞書
     const openExpansionDicConverter = new OpenExpansionDicConverter(csvDatas);
-    openExpansionDicConverter.setMetaData('../assets/metadata.yml');
+    openExpansionDicConverter.setMetaData('../assets/metaData.yml');
     openExpansionDicConverter.setReadMePath(
       '../assets/readme/OpenExpansionDic.txt',
       'はじめにお読みください'
@@ -73,7 +73,7 @@ class Controller {
 
     // MS-IME
     const msIMEConverter = new MSIMEConverter(csvDatas);
-    msIMEConverter.setMetaData('../assets/metadata.yml');
+    msIMEConverter.setMetaData('../assets/metaData.yml');
     msIMEConverter.setReadMePath('../assets/readme/MSIME.txt', 'はじめにお読みください');
     msIMEConverter.setFileNamePrefix(`thdic-r${msIMEConverter.getRev()}-`);
     msIMEConverter.outputFile(outputPath + 'MS-IME', 'txt');

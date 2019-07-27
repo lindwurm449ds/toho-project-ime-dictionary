@@ -1,2 +1,5 @@
-# metadata.yml
-metadata.yml
+# .yml
+*.yml
+
+# .zip
+*.zip

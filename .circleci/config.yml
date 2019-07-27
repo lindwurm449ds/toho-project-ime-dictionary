@@ -1,1 +1,70 @@
 version: 2
+
+aliases:
+  - &container_config
+    docker:
+      - image: circleci/node:10.13.0
+    working_directory: /home/circleci/project
+
+  - &show_infomation
+    name: Show system information.
+    command: |
+      echo "Node $(node -v)"
+      echo "Npm $(npm -v)"
+  - &clasp_permission_setting
+    name: Setting ClaspCI Permission.
+    command: chmod +x ./.scripts/clasp-ci.sh
+
+  - &build
+    name: Build.
+    command: |
+      npm run setup
+      npm run build
+
+  - &package
+    name: Package.
+    command: |
+      npm run conv
+      npm run package
+      sleep 1
+
+  - &deploy_permission_setting
+    name: Setting deploy.sh Permission.
+    command: chmod +x ./.scripts/deploy.sh
+
+  - &deploy
+    name: Deploy to WebServer.
+    command: ./.scripts/deploy-.sh
+
+jobs:
+  build:
+    <<: *container_config
+    steps:
+      - checkout
+      - run: *show_infomation
+      - run: *build
+      - run: *package
+  build_deploy:
+    <<: *container_config
+    steps:
+      - checkout
+      - run: *show_infomation
+      - run: *build
+      - run: *package
+      - run: *deploy_permission_setting
+      - run: *deploy
+
+workflows:
+  version: 2
+  build_workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: master
+  build_deploy_workflow:
+    jobs:
+      - build_deploy:
+          filters:
+            branches:
+              only: master

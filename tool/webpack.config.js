@@ -1,30 +1,29 @@
-path = require("path");
-Webpack = require("webpack");
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-var-requires */
+let path = require('path');
+let Webpack = require('webpack');
 
 module.exports = {
-  mode: "development",
-  entry: ["./src/convCSV.ts"],
+  mode: 'development',
+  entry: {
+    convCSV: './src/convCSV.ts',
+    packageZip: './src/packageZip.ts'
+  },
   target: 'node',
   devtool: false,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "[name].js"
+    filename: '[name].js'
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-      },
+        loader: 'ts-loader'
+      }
     ]
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx',
-      '.json',
-      '.ts',
-      '.tsx'
-    ]
-  },
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
+  }
 };
