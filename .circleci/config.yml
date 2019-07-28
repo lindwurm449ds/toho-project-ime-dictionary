@@ -30,9 +30,7 @@ aliases:
 
   - &deploy
     name: Deploy to WebServer.
-    command: |
-      chmod +x .circleci/upload_server.sh
-      ./.circleci/upload_server.sh
+    command: npm run deploy
 
 jobs:
   build:

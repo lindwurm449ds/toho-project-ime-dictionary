@@ -7,7 +7,8 @@ module.exports = {
   mode: 'development',
   entry: {
     convCSV: './src/convCSV.ts',
-    packageZip: './src/packageZip.ts'
+    packageZip: './src/packageZip.ts',
+    deployServer: './src/deployServer.ts'
   },
   target: 'node',
   devtool: false,

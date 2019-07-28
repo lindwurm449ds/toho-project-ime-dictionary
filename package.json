@@ -7,7 +7,8 @@
     "setup": "cd ./tool && npm install && cd ../ && npm install",
     "build": "cd ./tool && npm run build && cd ../",
     "conv": "rimraf ./dist && cd ./tool && node ./dist/convCSV.js && cd ../",
-    "package": "cd ./tool && node ./dist/packageZip.js && cd ../ && cpx ./assets/metaData.yml ./web"
+    "package": "cd ./tool && node ./dist/packageZip.js && cd ../ && cpx ./assets/metaData.yml ./web",
+    "deploy": "cd ./tool && node ./dist/deployServer.js && cd ../"
   },
   "repository": {
     "type": "git",
