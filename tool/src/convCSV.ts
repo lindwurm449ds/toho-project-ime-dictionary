@@ -36,7 +36,7 @@ class Controller {
     }
 
     const file = new File(this.dirPath);
-    const fileList = await file.getList('csv');
+    const fileList = file.getList('csv');
     //console.log(fileList);
 
     let csvDatas: CsvCollection = {};

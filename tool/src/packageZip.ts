@@ -114,7 +114,7 @@ class Controller {
     }
 
     const distDir = new File(this.distDirPath);
-    const distDirList = await distDir.getList('');
+    const distDirList = distDir.getList('');
 
     if (!fs.existsSync(this.packageDirPath)) {
       fs.mkdirpSync(this.packageDirPath);
